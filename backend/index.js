@@ -30,7 +30,7 @@ app.use(express.static(path.join(path.dirname(__dirname), "dist")));
 app.post('/lastfm', async (req, res) => {
 	let data = {};
 
-	lfm.user.getRecentTracks({
+	await lfm.user.getRecentTracks({
 		'limit' : 200,
 		'user' : req.body.lastfmid,
 		'extended' : 1
@@ -63,14 +63,37 @@ app.post('/lastfm', async (req, res) => {
 						return console.log(err);
 					}
 					console.log("The file was saved!");
-				}); 
-				res.redirect('http://localhost:3030');
+				});
 			} catch (err) {
 				console.error(err);
 			}
 		}
 	});
-	
+
+	let topdata = {
+		'albums' : [],
+		'artists' : [],
+		'tracks' : []
+	}
+
+	lfm.user.getTopArtists({
+		'user' : req.body.lastfmid
+	}, function (err, response) {
+		response.artist.forEach(artist => topdata['artists'].push(artist.name));
+		lfm.user.getTopAlbums({
+			'user' : req.body.lastfmid
+		}, function (err, response) {
+			response.album.forEach(album => topdata.albums.push(album.name));
+			lfm.user.getTopTracks({
+				'user' : req.body.lastfmid
+			}, function (err, response) {
+				response.track.forEach(track => topdata.tracks.push(track.name));
+				console.log(topdata.artists.length)
+				res.send(topdata);
+			});
+		});
+	});
+
 });
 
 app.listen(PORT, () => {
