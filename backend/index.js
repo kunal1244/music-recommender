@@ -3,12 +3,24 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const { Parser } = require('json2csv');
-const { PythonShell } =require('python-shell'); 
+const {PythonShell} = require('python-shell');
+const SpotifyWebApi = require("spotify-web-api-node");
+// const recommendations = require("recommendations.csv");
 
 // const {sequelize, data, location} = require('./sequelize');
 // const { QueryTypes } = require('sequelize');
 const PORT = 3030;
 const LastfmAPI = require('lastfmapi');
+
+const scopes = [
+	"playlist-modify-public"
+];
+
+let spotifyConfig = {
+	clientId: process.env.SPOTIFY_API_ID,
+	clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+	redirectUri: process.env.SPOTIFY_CALLBACK_URL,
+}
 
 require("dotenv").config();
 
@@ -27,26 +39,48 @@ app.use(express.urlencoded({
 app.use(express.static(path.join(path.dirname(__dirname), "dist")));
 
 
+app.get("/login", (req, res) => {
+	var html = spotifyApi.createAuthorizeURL(scopes);
+	res.redirect(html + "&show_dialog=true");
+});
+
+app.get("/calllback", async (req, res) => {
+	const { code } = req.query;
+	try {
+		var data = await spotifyApi.authorizationCodeGrant(code);
+		const { access_token, refresh_token } = data.body;
+		spotifyConfig.accessToken = access_token;
+		spotifyApi.setAccessToken(access_token);
+		spotifyApi.setRefreshToken(refresh_token);
+		await fs.writeFile("oauthtoken", access_token, function(err) {
+			if(err) {
+				return console.log(err);
+			}
+			console.log("The file was saved!");
+		});
+		console.log(access_token + "         " + refresh_token);
+		res.redirect("http://localhost:3030");
+	} catch (err) {
+		res.redirect("/#/error/invalid token");
+	}
+});
+
+
 app.post('/lastfm', async (req, res) => {
 	let data = {};
 
-	await lfm.user.getRecentTracks({
+	await lfm.user.getTopTracks({
 		'limit' : 200,
+		'period' : 'overall',
 		'user' : req.body.lastfmid,
-		'extended' : 1
 	}, function (err, response) {
 		if (err) { throw err; }
 		else{
 			response.track.forEach(track => {
 				data[track.name] = {
 					"track" : track.name,
-					"artist" : track.artist.name 
-				}
-				if(track.name in Object.keys(data)){
-					data[track.name].count++;
-				}
-				else{
-					data[track.name].count = 1;
+					"artist" : track.artist.name,
+					"count" : track.playcount 
 				}
 			});
 			let output = [];
@@ -73,27 +107,44 @@ app.post('/lastfm', async (req, res) => {
 	let topdata = {
 		'albums' : [],
 		'artists' : [],
-		'tracks' : []
+		'tags' : []
 	}
 
 	lfm.user.getTopArtists({
 		'user' : req.body.lastfmid
 	}, function (err, response) {
-		response.artist.forEach(artist => topdata['artists'].push(artist.name));
+		response.artist.forEach(artist => topdata.artists.push(artist.name));
 		lfm.user.getTopAlbums({
 			'user' : req.body.lastfmid
 		}, function (err, response) {
 			response.album.forEach(album => topdata.albums.push(album.name));
-			lfm.user.getTopTracks({
-				'user' : req.body.lastfmid
-			}, function (err, response) {
-				response.track.forEach(track => topdata.tracks.push(track.name));
-				console.log(topdata.artists.length)
-				res.send(topdata);
-			});
+			// lfm.user.getTopTags({
+			// 	'user' : req.body.lastfmid
+			// }, function (err, response) {
+			// 	console.log(response);
+			// 	response.toptags.tag.forEach(tag => topdata.tags.push(tag.name));
+			res.send(topdata);
+			// });
 		});
 	});
 
+});
+
+app.get('/get-recommendations', async (req, res) => {
+	// PythonShell.run('model.py', null, function (err) {
+	// 	if (err) throw err;
+	// 	console.log('recommendations received');
+	// });
+
+	await fs.readFile('recommendations.csv', 'utf-8', function(err, data) {
+		data = data.split('\n');
+		data.pop();
+		for(let i = 0; i < data.length; i++){
+			data[i] = "spotify:track:" + data[i];
+		}
+
+	});
+	res.send("Done!")
 });
 
 app.listen(PORT, () => {

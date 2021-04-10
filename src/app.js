@@ -12,3 +12,14 @@ document.getElementById("lastfm").onsubmit = async (e) => {
     }).then(response => response.json())
     .then(data => console.log(data))
 }
+
+
+document.getElementById("get-recs").onclick = async (e) => {
+    e.preventDefault();
+    fetch('http://localhost:3030/get-recommendations', {
+        method : 'GET',
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+    }).then(response => response.json())
+}

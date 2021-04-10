@@ -1,0 +1,229 @@
+{
+    "artist": {
+        "name": "Kendrick Lamar",
+        "mbid": "381086ea-f511-4aba-bdf9-71c753dc5077",
+        "url": "https://www.last.fm/music/Kendrick+Lamar",
+        "image": [
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "small"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "medium"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "large"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "extralarge"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "mega"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": ""
+            }
+        ],
+        "streamable": "0",
+        "ontour": "1",
+        "stats": {
+            "listeners": "1909110",
+            "playcount": "152789139"
+        },
+        "similar": {
+            "artist": [
+                {
+                    "name": "Kanye West",
+                    "url": "https://www.last.fm/music/Kanye+West",
+                    "image": [
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "small"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "medium"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "large"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "extralarge"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Joey Bada$$",
+                    "url": "https://www.last.fm/music/Joey+Bada$$",
+                    "image": [
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "small"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "medium"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "large"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "extralarge"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "J. Cole",
+                    "url": "https://www.last.fm/music/J.+Cole",
+                    "image": [
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "small"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "medium"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "large"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "extralarge"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Jay Rock",
+                    "url": "https://www.last.fm/music/Jay+Rock",
+                    "image": [
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "small"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "medium"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "large"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "extralarge"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "ScHoolboy Q",
+                    "url": "https://www.last.fm/music/ScHoolboy+Q",
+                    "image": [
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "small"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "medium"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "large"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "extralarge"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        "tags": {
+            "tag": [
+                {
+                    "name": "Hip-Hop",
+                    "url": "https://www.last.fm/tag/Hip-Hop"
+                },
+                {
+                    "name": "rap",
+                    "url": "https://www.last.fm/tag/rap"
+                },
+                {
+                    "name": "seen live",
+                    "url": "https://www.last.fm/tag/seen+live"
+                },
+                {
+                    "name": "west coast",
+                    "url": "https://www.last.fm/tag/west+coast"
+                },
+                {
+                    "name": "compton",
+                    "url": "https://www.last.fm/tag/compton"
+                }
+            ]
+        },
+        "bio": {
+            "links": {
+                "link": {
+                    "#text": "",
+                    "rel": "original",
+                    "href": "https://last.fm/music/Kendrick+Lamar/+wiki"
+                }
+            },
+            "published": "21 Sep 2010, 04:11",
+            "summary": "Kendrick Lamar (born Kendrick Lamar Duckworth June 17, 1987) is a rapper from Compton, California. He is also a member of the hip-hop supergroup Black Hippy collective along with members Jay Rock, Ab-Soul and Schoolboy Q. His music is largely influenced by the works of 2Pac, Jay-Z, Nas, DMX, The Notorious B.I.G., Mos Def, Eazy-E and Eminem.\n\nHe began to gain major recognition in 2010 after his first retail release, Overly Dedicated. The following year, Lamar independently released his first studio album Section. <a href=\"https://www.last.fm/music/Kendrick+Lamar\">Read more on Last.fm</a>",
+            "content": "Kendrick Lamar (born Kendrick Lamar Duckworth June 17, 1987) is a rapper from Compton, California. He is also a member of the hip-hop supergroup Black Hippy collective along with members Jay Rock, Ab-Soul and Schoolboy Q. His music is largely influenced by the works of 2Pac, Jay-Z, Nas, DMX, The Notorious B.I.G., Mos Def, Eazy-E and Eminem.\n\nHe began to gain major recognition in 2010 after his first retail release, Overly Dedicated. The following year, Lamar independently released his first studio album Section.80, which included his debut single, \"HiiiPoWeR\". By that time, he had amassed a large Internet following and collaborated with several artists in the hip hop industry, including The Game, Snoop Dogg, Busta Rhymes, Lil Wayne and Drake.\n\nLamar secured a major-label record deal with Aftermath and Interscope Records, in 2012. His major-label debut, good kid, m.A.A.d city, was released in October 2012 to critical success. The record contained the top 40 singles \"Swimming Pools (Drank)\", \"Bitch, Don't Kill My Vibe\", and \"Poetic Justice\". It debuted at number two on the U.S. Billboard 200 chart and was later certified platinum by the Recording Industry Association of America (RIAA). Lamar won his first Grammy Award for \"i\", lead single from his critical acclaimed third album To Pimp a Butterfly (2015). The album drew on free jazz, funk, soul, and spoken word, debuted atop the charts in the U.S. and the UK, and won the Grammy Award for Best Rap Album at the 58th ceremony. In 2016, Lamar released untitled unmastered., a collection of unreleased demos that originated during the recording sessions for Butterfly.\n\nLamar has received a number of accolades over the course of his career, including seven Grammy Awards. In early 2013, MTV named Lamar the number one \"Hottest MC in the Game\", on their annual list. Time named Lamar one of the 100 most influential people in the world in 2016.\n\nLamar's fourth album, DAMN. was released April 17, 2017 to widespread critical acclaim. It debuted at number one on the Billboard 200, earning Lamar his third consecutive number one album in the United States. The album was supported by the lead single, \"Humble.\".  Lamar won the Pulitzer's Prize for DAMN.\n <a href=\"https://www.last.fm/music/Kendrick+Lamar\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply."
+        }
+    }
+}
