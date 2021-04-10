@@ -2,16 +2,16 @@ import json
 import pandas as pd
 import requests
 
-data = [""]
+# data = [""]
 
-with open ("oauthtoken", "r") as myfile:
-    data = myfile.readlines()
+# with open ("oauthtoken", "r") as myfile:
+#     data = myfile.readlines()
 
 class CreatePlaylist:
 
     def __init__(self):
         self.user_id = "31a7ty2vldsmfyagbr5eizm2lihm"
-        self.token = data[0]
+        self.token = "BQAM9tUlS0zWpbCUQfrM6nxLbFDSU10nA6qMtdx6VddFBmU-i2M9F-ezuj59lejpUwNwSt-KIF8jOjKAMHnI-FoieymSllmPvBMBXo0zSVHh8hre-9gOzI_0LNFN_6OsoeT74XtcnRT3IcMVr-eNXt1CGV-DZYeUPQ-atQDpS9y3X4P3RIhEhb4o7zsokt3jmML0U7E2SMAP1UECDfFX8sU1KnKo6s3C5-4zyQ8ONJ7vLy2O-l-peaU5pdLpil12I7WTY6vfrqzZJqIBquq7pKZmIjqQvQ2GZRaq1GF2LyyS37zZ"
         self.csv = "recommendations.csv"
         self.tuples = self.get_song_names()
 
