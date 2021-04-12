@@ -16,13 +16,16 @@ const scopes = [
 	"playlist-modify-public"
 ];
 
+require("dotenv").config();
+
+
 let spotifyConfig = {
 	clientId: process.env.SPOTIFY_API_ID,
 	clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
 	redirectUri: process.env.SPOTIFY_CALLBACK_URL,
 }
 
-require("dotenv").config();
+var spotifyApi = new SpotifyWebApi(spotifyConfig);
 
 var lfm = new LastfmAPI({
 	'api_key' : process.env.LASTFM_API_KEY,
@@ -44,7 +47,7 @@ app.get("/login", (req, res) => {
 	res.redirect(html + "&show_dialog=true");
 });
 
-app.get("/calllback", async (req, res) => {
+app.get("/callback", async (req, res) => {
 	const { code } = req.query;
 	try {
 		var data = await spotifyApi.authorizationCodeGrant(code);
@@ -145,6 +148,17 @@ app.get('/get-recommendations', async (req, res) => {
 
 	});
 	res.send("Done!")
+});
+
+app.get('/create-playlist', async (req, res) => {
+	let options = {
+		pythonOptions: ['-u'],
+		args: [spotifyApi.getAccessToken()]
+	};
+	PythonShell.run('csv-to-playlist.py', options, function (err) {
+		if (err) throw err;
+		console.log('sent');
+	});
 });
 
 app.listen(PORT, () => {

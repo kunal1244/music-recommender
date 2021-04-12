@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import requests
+import sys
 
 # data = [""]
 
@@ -95,6 +96,9 @@ class CreatePlaylist:
 
 
 if __name__ == '__main__':
-    cp = CreatePlaylist()
-    cp.add_to_playlist()
+    print(sys.argv[1])
+    # with open ("oauthtoken", "r") as myfile:
+#     data = myfile.readlines()
+    # cp = CreatePlaylist()
+    # cp.add_to_playlist()
 
