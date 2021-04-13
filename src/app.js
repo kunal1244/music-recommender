@@ -21,5 +21,16 @@ document.getElementById("get-recs").onclick = async (e) => {
         headers : {
             'Content-Type' : 'application/json'
         }
-    }).then(response => response.json())
+    })
+}
+
+document.getElementById("create-playlist").onclick = async (e) => {
+    e.preventDefault();
+    fetch('http://localhost:3030/login', {
+        mode : 'no-cors', 
+        method : 'GET',
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+    })
 }

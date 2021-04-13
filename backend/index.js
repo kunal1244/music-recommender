@@ -5,10 +5,7 @@ const fs = require('fs');
 const { Parser } = require('json2csv');
 const {PythonShell} = require('python-shell');
 const SpotifyWebApi = require("spotify-web-api-node");
-// const recommendations = require("recommendations.csv");
 
-// const {sequelize, data, location} = require('./sequelize');
-// const { QueryTypes } = require('sequelize');
 const PORT = 3030;
 const LastfmAPI = require('lastfmapi');
 
@@ -62,7 +59,7 @@ app.get("/callback", async (req, res) => {
 			console.log("The file was saved!");
 		});
 		console.log(access_token + "         " + refresh_token);
-		res.redirect("http://localhost:3030");
+		res.redirect("http://localhost:3030/create-playlist");
 	} catch (err) {
 		res.redirect("/#/error/invalid token");
 	}
@@ -134,20 +131,10 @@ app.post('/lastfm', async (req, res) => {
 });
 
 app.get('/get-recommendations', async (req, res) => {
-	// PythonShell.run('model.py', null, function (err) {
-	// 	if (err) throw err;
-	// 	console.log('recommendations received');
-	// });
-
-	await fs.readFile('recommendations.csv', 'utf-8', function(err, data) {
-		data = data.split('\n');
-		data.pop();
-		for(let i = 0; i < data.length; i++){
-			data[i] = "spotify:track:" + data[i];
-		}
-
+	await PythonShell.run('model.py', null, function (err) {
+		if (err) throw err;
+		console.log('recommendations received');
 	});
-	res.send("Done!")
 });
 
 app.get('/create-playlist', async (req, res) => {
@@ -155,10 +142,12 @@ app.get('/create-playlist', async (req, res) => {
 		pythonOptions: ['-u'],
 		args: [spotifyApi.getAccessToken()]
 	};
-	PythonShell.run('csv-to-playlist.py', options, function (err) {
+	await PythonShell.run('csv-to-playlist.py', options, function (err) {
 		if (err) throw err;
 		console.log('sent');
+		res.redirect("http://localhost:3030/");
 	});
+
 });
 
 app.listen(PORT, () => {

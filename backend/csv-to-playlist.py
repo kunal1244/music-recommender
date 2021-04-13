@@ -3,27 +3,13 @@ import pandas as pd
 import requests
 import sys
 
-# data = [""]
-
-# with open ("oauthtoken", "r") as myfile:
-#     data = myfile.readlines()
 
 class CreatePlaylist:
 
     def __init__(self):
         self.user_id = "31a7ty2vldsmfyagbr5eizm2lihm"
-        self.token = "BQAM9tUlS0zWpbCUQfrM6nxLbFDSU10nA6qMtdx6VddFBmU-i2M9F-ezuj59lejpUwNwSt-KIF8jOjKAMHnI-FoieymSllmPvBMBXo0zSVHh8hre-9gOzI_0LNFN_6OsoeT74XtcnRT3IcMVr-eNXt1CGV-DZYeUPQ-atQDpS9y3X4P3RIhEhb4o7zsokt3jmML0U7E2SMAP1UECDfFX8sU1KnKo6s3C5-4zyQ8ONJ7vLy2O-l-peaU5pdLpil12I7WTY6vfrqzZJqIBquq7pKZmIjqQvQ2GZRaq1GF2LyyS37zZ"
-        self.csv = "recommendations.csv"
-        self.tuples = self.get_song_names()
+        self.token = sys.argv[1]
 
-    # Step 1: Get list of tuples containing song and artist names from csv file.
-    def get_song_names(self):
-        df = pd.read_csv(self.csv)
-        df = df.sample(frac=1) # shuffle the dataframe so songs are not ordered based on genre
-        tuple_list = list(zip(df.track, df.artist))
-        return tuple_list
-
-    # Step 2: Create playlist in Spotify.
     def create_playlist(self):
         request_body = json.dumps({
             "name": "CSV_to_Spotify pt 2",
@@ -44,36 +30,11 @@ class CreatePlaylist:
         # playlist id
         return response_json["id"]
 
-    # Step 3: Get each song's Spotify uri
-    def get_spotify_uri(self, song, artist):
-        query = "https://api.spotify.com/v1/search?query=track%3A{}&type=track&offset=0&limit=1".format(song, artist)
-        response = requests.get(
-            query,
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": "Bearer {}".format(self.token)
-            }
-        )
-        response_json = response.json()
-        songs = response_json["tracks"]["items"]
 
-        # URI
-        print(len(songs))
-        if len(songs) > 0: 
-            uri = songs[0]["uri"]
-            return uri
-        else:
-            return ""
-
-    # Step 4: Add songs to Spotify Playlist
     def add_to_playlist(self):
-        uris = []
-
-        # Loop through tuples and get URIs
-        for i, j in self.tuples[:40]:
-            uri = self.get_spotify_uri(i, j)
-            if uri != "":
-                uris.append(self.get_spotify_uri(i, j))
+        uris = pd.read_csv("recommendations.csv", header=None)[0].tolist()
+        for i in range(len(uris)):
+            uris[i] = "spotify:track:" + uris[i]
 
         # Create new playlist
         playlist_id = self.create_playlist()
@@ -96,9 +57,6 @@ class CreatePlaylist:
 
 
 if __name__ == '__main__':
-    print(sys.argv[1])
-    # with open ("oauthtoken", "r") as myfile:
-#     data = myfile.readlines()
-    # cp = CreatePlaylist()
-    # cp.add_to_playlist()
+    cp = CreatePlaylist()
+    cp.add_to_playlist()
 
