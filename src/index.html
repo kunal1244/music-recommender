@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:description" content="Music Recommender System" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap"
       rel="stylesheet"
@@ -17,6 +19,20 @@
       <input type="text" id = "lastfmid" placeholder="Enter your lastfm id" name="lastfmid">
       <input type="submit" id="submit"> 
     </form>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col">
+          <ul id = "artists">
+
+          </ul>
+        </div>
+        <div class = "col">
+          <ul id = "albums">
+
+          </ul>
+        </div>
+      </div>
+    </div>
     <button id = "get-recs">Get Recommendations</button>
     <button id = "create-playlist">Create Playlist</button>
     <script src = "app.js"></script>
