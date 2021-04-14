@@ -11,14 +11,17 @@ document.getElementById("lastfm").onsubmit = async (e) => {
         body : JSON.stringify(data)
     }).then(response => response.json())
     .then(data => {
-        console.log(data)
-        for(let i in data["albums"]){
+        document.getElementById("h-albums").style.display = "block";
+        document.getElementById("h-artists").style.display = "block";
+        document.getElementById("get-recs").style.display = "block";
+        document.getElementById("lastfm").style.display="none";
+        for(let i in data["albums"].slice(0, 10)){
             var node = document.createElement("li");
             var textnode = document.createTextNode(data["albums"][i]);
             node.appendChild(textnode);
             document.getElementById("albums").appendChild(node);
         }
-        for(let i in data["artists"]){
+        for(let i in data["artists"].slice(0, 10)){
             var node = document.createElement("li");
             var textnode = document.createTextNode(data["artists"][i]);
             node.appendChild(textnode);
@@ -35,15 +38,6 @@ document.getElementById("get-recs").onclick = async (e) => {
         headers : {
             'Content-Type' : 'application/json'
         }
-    })
-}
-
-document.getElementById("create-playlist").onclick = async (e) => {
-    e.preventDefault();
-    fetch('http://localhost:3030/login', {
-        method : 'GET',
-        headers : {
-            'Content-Type' : 'application/json'
-        }
-    })
+    }).then(response => response.json())
+    .then(data => alert(data.message));
 }

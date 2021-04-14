@@ -7,7 +7,7 @@ import sys
 class CreatePlaylist:
 
     def __init__(self):
-        self.user_id = "31a7ty2vldsmfyagbr5eizm2lihm"
+        self.user_id = sys.argv[2]
         self.token = sys.argv[1]
 
     def create_playlist(self):

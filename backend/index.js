@@ -19,7 +19,7 @@ require("dotenv").config();
 let spotifyConfig = {
 	clientId: process.env.SPOTIFY_API_ID,
 	clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-	redirectUri: process.env.SPOTIFY_CALLBACK_URL,
+	redirectUri: process.env.ENV_URL + "/callback",
 }
 
 var spotifyApi = new SpotifyWebApi(spotifyConfig);
@@ -52,14 +52,7 @@ app.get("/callback", async (req, res) => {
 		spotifyConfig.accessToken = access_token;
 		spotifyApi.setAccessToken(access_token);
 		spotifyApi.setRefreshToken(refresh_token);
-		await fs.writeFile("oauthtoken", access_token, function(err) {
-			if(err) {
-				return console.log(err);
-			}
-			console.log("The file was saved!");
-		});
-		console.log(access_token + "         " + refresh_token);
-		res.redirect("http://localhost:3030/create-playlist");
+		res.redirect(process.env.ENV_URL + "/create-playlist");
 	} catch (err) {
 		res.redirect("/#/error/invalid token");
 	}
@@ -96,7 +89,6 @@ app.post('/lastfm', async (req, res) => {
 					if(err) {
 						return console.log(err);
 					}
-					console.log("The file was saved!");
 				});
 			} catch (err) {
 				console.error(err);
@@ -134,18 +126,22 @@ app.get('/get-recommendations', async (req, res) => {
 	await PythonShell.run('model.py', null, function (err) {
 		if (err) throw err;
 		console.log('recommendations received');
+		res.send({
+			message: "recommendations received"
+		})
 	});
 });
 
 app.get('/create-playlist', async (req, res) => {
+
+	let data = await spotifyApi.getMe();
 	let options = {
 		pythonOptions: ['-u'],
-		args: [spotifyApi.getAccessToken()]
+		args: [spotifyApi.getAccessToken(), data["body"]["id"]]
 	};
 	await PythonShell.run('csv-to-playlist.py', options, function (err) {
 		if (err) throw err;
-		console.log('sent');
-		res.redirect("http://localhost:3030/");
+		res.redirect(process.env.ENV_URL);
 	});
 
 });

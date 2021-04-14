@@ -4,37 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:description" content="Music Recommender System" />
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=Space+Mono:400,700&display=swap"
-      rel="stylesheet"
-    />
     <meta property="og:image" content="https://i.imgur.com/1AFEXhs.png" />
     <title>Music Recommender System</title>
-    <!-- <link rel="stylesheet" href="./styles/main.css" /> -->
   </head>
-  <body>
+  <body style = "background-color: black; color: white; font-family: 'proxima-nova';">
+    <center>
     <form id ="lastfm">
       <input type="text" id = "lastfmid" placeholder="Enter your lastfm id" name="lastfmid">
-      <input type="submit" id="submit"> 
+      <b><input type="submit" id="submit" class = "btn btn-success"> </b>
     </form>
     <div class = "container">
+      <b>
       <div class = "row">
-        <div class = "col">
-          <ul id = "artists">
+        <div class = "col" style = "text-align: center;">
+          <p style = "display: none; text-align: center;" id = "h-artists"> TOP ARTISTS </p>
+          <ul id = "artists" style = "list-style-type: none;">
 
           </ul>
         </div>
-        <div class = "col">
-          <ul id = "albums">
+        <div class = "col" style = "text-align: center;">
+          <p style = "display: none; text-align: center;" id = "h-albums"> TOP ALBUMS </p>
+          <ul id = "albums" style = "list-style-type: none;">
 
           </ul>
         </div>
       </div>
+    </b>
     </div>
-    <button id = "get-recs">Get Recommendations</button>
-    <button id = "create-playlist">Create Playlist</button>
+    <button class = "btn btn-success" id = "get-recs" style = "display: none;"><b>GET RECOMMENDATIONS</b></button>
+  </center>
     <script src = "app.js"></script>
   </body>
 

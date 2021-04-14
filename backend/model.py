@@ -37,7 +37,7 @@ parameters = {
     'max_depth':[5],
     'n_estimators':[5]
 }
-clf = Pipeline([('CV',GridSearchCV(RandomForestClassifier(), parameters, cv = 5))])
+clf = Pipeline([('CV',GridSearchCV(RandomForestClassifier(), parameters, cv = 2))])
 clf.fit(X_train, y_train)
 
 prediction = clf.predict(future.drop(columns=['track','id','favorite','artist','key','mode','release_date']))
