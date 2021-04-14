@@ -5,36 +5,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:description" content="Music Recommender System" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <meta property="og:image" content="https://i.imgur.com/1AFEXhs.png" />
     <title>Music Recommender System</title>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      .bg-image {
+        /* The image used */
+        /* background-image: url("photographer.jpg"); */
+        background-color: black;
+        
+        /* Add the blur effect */
+        
+        /* Full height */
+        height: 100%; 
+        
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .bg-text {
+        background-color: rgb(0,0,0); /* Fallback color */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+      }
+      .ml3 {
+      font-weight: 900;
+      font-size: 3.5em;
+    }
+    .form-control-borderless {
+        border: none;
+    }
+
+    .form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+    </style>
   </head>
-  <body style = "background-color: black; color: white; font-family: 'proxima-nova';">
+  <body style = "color: white;">
+
+  <div class="bg-image"></div>
+  <div class = "bg-text">
     <center>
-    <form id ="lastfm">
-      <input type="text" id = "lastfmid" placeholder="Enter your lastfm id" name="lastfmid">
-      <b><input type="submit" id="submit" class = "btn btn-success"> </b>
-    </form>
+      <h1 class="ml3" id = "heading">Music Recommender</h1>
+      <br><br>
+      <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8">
+              <form class="card card-sm" id = "lastfm">
+                  <div class="card-body row no-gutters align-items-center">
+                      <!--end of col-->
+                      <div class="col">
+                          <input id = "lastfmid" name = "lastfmid" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Enter Last.FM ID">
+                      </div>
+                      <!--end of col-->
+                      <div class="col-auto">
+                          <button id = "submit" class="btn btn-lg btn-success" type="submit">Search</button>
+                      </div>
+                      <!--end of col-->
+                  </div>
+              </form>
+          </div>
+          <!--end of col-->
+      </div>
+    </div>
     <div class = "container">
-      <b>
       <div class = "row">
         <div class = "col" style = "text-align: center;">
-          <p style = "display: none; text-align: center;" id = "h-artists"> TOP ARTISTS </p>
+          <p class = "display-4" style = "display: none; text-align: center;" id = "h-artists"> TOP ARTISTS </p>
           <ul id = "artists" style = "list-style-type: none;">
 
           </ul>
         </div>
         <div class = "col" style = "text-align: center;">
-          <p style = "display: none; text-align: center;" id = "h-albums"> TOP ALBUMS </p>
+          <p class = "display-4" style = "display: none; text-align: center;" id = "h-albums"> TOP ALBUMS </p>
           <ul id = "albums" style = "list-style-type: none;">
 
           </ul>
         </div>
       </div>
-    </b>
     </div>
-    <button class = "btn btn-success" id = "get-recs" style = "display: none;"><b>GET RECOMMENDATIONS</b></button>
+    <br>
+    <button class = "btn btn-success" id = "get-recs" style = "display: none;">Get Recommendations</button>
+    <div class="spinner-border text-light" role="status" style = "display: none;" id = "spinner"> 
+      <span class="sr-only">Loading...</span>
+    </div>
+    <button class = "btn btn-success" id = "get-recs" style = "display: none;">Get Recommendations</button>
+    <br>
+
   </center>
-    <script src = "app.js"></script>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+  <script src = "app.js"></script>
   </body>
 
   

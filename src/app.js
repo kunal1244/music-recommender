@@ -1,3 +1,15 @@
+var textWrapper = document.querySelector('.ml3');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: (el, i) => 150 * (i+1)
+  })
+
 document.getElementById("lastfm").onsubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -15,6 +27,7 @@ document.getElementById("lastfm").onsubmit = async (e) => {
         document.getElementById("h-artists").style.display = "block";
         document.getElementById("get-recs").style.display = "block";
         document.getElementById("lastfm").style.display="none";
+        document.getElementById("heading").innerText = "Hello, " + document.getElementById("lastfmid").value + "!";
         for(let i in data["albums"].slice(0, 10)){
             var node = document.createElement("li");
             var textnode = document.createTextNode(data["albums"][i]);
@@ -32,6 +45,7 @@ document.getElementById("lastfm").onsubmit = async (e) => {
 
 
 document.getElementById("get-recs").onclick = async (e) => {
+    document.getElementById("spinner").style.display = "block";
     e.preventDefault();
     fetch('http://localhost:3030/get-recommendations', {
         method : 'GET',
@@ -39,5 +53,8 @@ document.getElementById("get-recs").onclick = async (e) => {
             'Content-Type' : 'application/json'
         }
     }).then(response => response.json())
-    .then(data => alert(data.message));
+    .then(data => {
+        alert(data.message);
+        document.getElementById("spinner").style.display = "none";
+    });
 }
