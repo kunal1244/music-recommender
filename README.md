@@ -9,7 +9,7 @@ This data is passed on to the master node which uses machine learning libraries 
 Steps to use the hosted application - 
 
 1. Log on to 68.183.247.110
-2. Enter the Last.FM ID to base your recommendations on, and click on Submit (For testing - use "humblebumble" without the quotes).
+2. Enter the Last.FM ID to base your recommendations on, and click on Submit (For testing - use "humblebumble_" without the quotes).
 3. The top 10 artist and album names for the Last.FM profile should be visible on the dashboard. Click on 'Get Recommendations'.
 4. You should receive a prompt that your recommendations are received by the service.
 5. Log on to 68.183.247.110/login
